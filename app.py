@@ -113,6 +113,9 @@ def send_email_with_attachment_endpoint():
     subject = request.form.get('subject')
     body = request.form.get('body')
     attachment_file = request.files.get('resume')
+    if attachment_file is None:
+        # No file was passed or the file is empty
+        return jsonify({"status": "error", "message": "All fields are required except cv path"}), 400
     cv_file = request.files.get('cv')
     
     # Validate required fields
