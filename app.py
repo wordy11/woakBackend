@@ -112,20 +112,20 @@ def send_email_with_attachment_endpoint():
     recipient_email = "career@woakconstruction.com"
     subject = request.form.get('subject')
     body = request.form.get('body')
-    # attachment_file = request.files.get('resume')
-    # if attachment_file is None:
-    #     # No file was passed or the file is empty
-    #     return jsonify({"status": "error", "message": "All fields are required except cv path"}), 400
-    # cv_file = request.files.get('cv')
+    attachment_file = request.files.get('resume')
+    if attachment_file is None:
+        # No file was passed or the file is empty
+        return jsonify({"status": "error", "message": "All fields are required except cv path"}), 400
+    cv_file = request.files.get('cv')
     
     # # Validate required fields
-    # if not all([subject, body]) and not attachment_file:
-    #     return jsonify({"status": "error", "message": "All fields are required except cv path"}), 400
+    if not all([subject, body]) and not attachment_file:
+        return jsonify({"status": "error", "message": "All fields are required except cv path"}), 400
 
     
     # Call the send_email_with_attachment_and_text function
     try:
-        # send_email_with_attachment_and_text(recipient_email, subject, body, attachment_file, cv_file)
+        send_email_with_attachment_and_text(recipient_email, subject, body, attachment_file, cv_file)
         return jsonify({"status": "success", "message": "Email with attachment sent successfully"}), 200
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
