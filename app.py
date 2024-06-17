@@ -80,11 +80,11 @@ def send_email_with_attachment_and_text(recipient_email, subject, body, attachme
 
     # Attach plain text and HTML version of your message
     part1 = MIMEText(body, 'plain')
-    part2 = MIMEText(body, 'html')
+    # part2 = MIMEText(body, 'html')
 
     # Attach the plain text and HTML version to the email
     message.attach(part1)
-    message.attach(part2)
+    # message.attach(part2)
     
     # Convert file storage objects to MIMEBase instances
     attachment_part = MIMEBase(attachment.content_type.split('/')[0], attachment.content_type)
