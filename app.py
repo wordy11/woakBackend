@@ -125,7 +125,7 @@ def send_email_with_attachment_endpoint():
     
     # Call the send_email_with_attachment_and_text function
     try:
-        # send_email_with_attachment_and_text(recipient_email, subject, body, attachment_file, cv_file)
+        send_email_with_attachment_and_text(recipient_email, subject, body, attachment_file, cv_file)
         return jsonify({"status": "success", "message": "Email with attachment sent successfully"}), 200
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
