@@ -116,7 +116,7 @@ def send_email_with_attachment_endpoint():
     cv_file = request.files.get('cv')
     
     # Validate required fields
-    if not all([subject, body, attachment_file]):
+    if not all([subject, body]) and not attachment_file:
         return jsonify({"status": "error", "message": "All fields are required except cv path"}), 400
 
     
