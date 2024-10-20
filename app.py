@@ -22,7 +22,7 @@ def chat_bot():
     if not sender or not message:
         return jsonify({"status": "error", "message": "Missing sender or message"}), 400
     
-    url = 'https://woakbot.woakconstruction.com/webhooks/rest/webhook'
+    url = 'http://0.0.0.0:5005/webhooks/rest/webhook'
     headers = {'Content-Type': 'application/json'}
     data_to_send = {
         "sender": sender,
